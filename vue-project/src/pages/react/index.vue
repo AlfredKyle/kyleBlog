@@ -1,8 +1,8 @@
 <template>
-    1
+    reactblog
 </template>
 
-<script lang="ts" setup name="DockerBar">
+<script lang=ts setup name="ReactBlog">
 
 </script>
 

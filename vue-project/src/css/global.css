@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+html {
+  overflow-y: auto !important;
+}
+
 a {
   text-decoration: none;
   color: inherit;

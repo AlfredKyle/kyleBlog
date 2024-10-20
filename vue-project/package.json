@@ -15,13 +15,17 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
+    "dayjs": "^1.11.13",
     "mitt": "^3.0.1",
     "pinia": "^2.2.4",
     "tailwindcss": "^3.4.14",
+    "v-drag": "^3.0.9",
     "vue": "^3.4.29",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.4.5",
+    "vuetify": "^3.7.3"
   },
   "devDependencies": {
+    "@mdi/font": "^7.4.47",
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.16.13",

@@ -1,6 +1,7 @@
 <template>
-    <div class=" p-2 inline-flex justify-center items-center gap-2 rounded-2xl backdrop-blur-sm bg-black/[0.2] dock">
-        <template v-for="item in dockList" :key="item.name">
+    <div
+        class=" p-2 inline-flex justify-center items-center gap-2 rounded-2xl backdrop-blur-sm bg-[var(--background-blur-color)] dock">
+        <template v-for="item in refDockList" :key="item.name">
             <v-tooltip :text="item.name" location="top">
                 <template v-slot:activator="{ props }">
                     <img class="dockLi" :src="item.url" @click="goTo(item)" v-bind="props">
@@ -13,17 +14,20 @@
 </template>
 
 <script lang="ts" setup name="DockBar">
-import { useWindow } from '@/store/Window';
-import type { navigatorItem } from '@/types';
+import { useWindowStore } from '@/store/useWindowStore';
+import type { dockerItem } from '@/types';
 import { onMounted } from 'vue';
-import { dockList } from '@/constance';
 
-let { changeWindowState } = useWindow();
+let { changeWindowState } = useWindowStore();
 
-/* 路由跳转 */
-function goTo(item: navigatorItem) {
-    console.log(item);
-    changeWindowState(item.name);
+const { refDockList, bringTheWindowUp } = useWindowStore();
+
+/* 打开窗口 */
+function goTo(item: dockerItem) {
+    // 修改window的zindex
+    bringTheWindowUp(item);
+    // 改变管理window的状态变量
+    changeWindowState(item.state);
 }
 
 onMounted(() => {

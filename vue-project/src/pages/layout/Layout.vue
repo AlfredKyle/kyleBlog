@@ -1,22 +1,28 @@
 <template>
     <div class="w-screen h-screen overflow-hidden">
         <!-- 顶部工具栏 -->
-        <div class="fixed h-8 w-full z-10">
+        <div class="fixed h-8 w-full z-[9999]">
             <Navigator></Navigator>
         </div>
 
         <!-- 显示内容 -->
-        <div class=" bg-red-500 h-full w-full content">
-            <Transition v-for="item in dockList" :key="item.id">
-                <Window v-show="windowStates[item.state as keyof typeof windowStates].value" class="window"
-                    :uniqueId="item.id" :zIndex="item.zIndex">
-                    <RouterView></RouterView>
+        <div class="h-full w-full content relative">
+            <Transition v-for="item in refDockList" :key="item.id">
+                <Window @mousedown="bringTheWindowUp(item)"
+                    v-show="windowStates[item.state as keyof typeof windowStates].value" class="window"
+                    :uniqueId="item.id" :zIndex="item.zIndex" :state="item.state">
+                    <template #menu>
+                        <component :is="getWindowMenuComponent(item.state)"></component>
+                    </template>
+                    <template #content>
+                        <component :is="getWindowContentComponent(item.state)"></component>
+                    </template>
                 </Window>
             </Transition>
         </div>
 
         <!-- 底部Docker -->
-        <div class=" fixed w-full h-16 bottom-4 flex justify-center z-10">
+        <div class="fixed w-full h-16 bottom-4 flex justify-center z-[9999]">
             <DockBar></DockBar>
         </div>
 
@@ -28,10 +34,12 @@
 import DockBar from '@/components/DockBar.vue';
 import Navigator from '@/components/Navigator.vue';
 import Window from '@/components/Window.vue';
-import { useWindow } from '@/store/Window';
+import useComponent from '@/hooks/useComponent';
+import { useWindowStore } from '@/store/useWindowStore';
 import { storeToRefs } from 'pinia';
-import { dockList } from '@/constance';
-let windowStates = storeToRefs(useWindow())
+let windowStates = storeToRefs(useWindowStore())
+const { refDockList, bringTheWindowUp } = useWindowStore()
+const { getWindowContentComponent, getWindowMenuComponent } = useComponent()
 </script>
 
 
@@ -42,7 +50,6 @@ let windowStates = storeToRefs(useWindow())
     background-size: cover;
 }
 
-/* 下面我们会解释这些 class 是做什么的 */
 .v-enter-active,
 .v-leave-active {
     transition: all 0.4s ease;

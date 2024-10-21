@@ -14,10 +14,12 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@primevue/themes": "^4.1.1",
     "axios": "^1.7.7",
     "dayjs": "^1.11.13",
     "mitt": "^3.0.1",
     "pinia": "^2.2.4",
+    "primeicons": "^7.0.0",
     "tailwindcss": "^3.4.14",
     "v-drag": "^3.0.9",
     "vue": "^3.4.29",

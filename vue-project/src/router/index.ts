@@ -1,6 +1,6 @@
 import Layout from '@/pages/layout/Layout.vue'
-import VueBlog from '@/pages/vue/index.vue'
-import ReactBlog from '@/pages/react/index.vue'
+import VueContent from '@/pages/vue/VueContent.vue'
+import ReactContent from '@/pages/react/ReactContent.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 /* const router = createRouter({
@@ -65,19 +65,7 @@ const router = createRouter({
     {
       path: '/desktop',
       name: 'desktop',
-      component: Layout,
-      children: [
-        {
-          name: 'vue',
-          path: 'vue',
-          component: VueBlog
-        },
-        {
-          name: 'react',
-          path: 'react',
-          component: ReactBlog
-        }
-      ]
+      component: Layout
     },
     {
       path: '/',

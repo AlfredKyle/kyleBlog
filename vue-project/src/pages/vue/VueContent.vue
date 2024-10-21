@@ -2,7 +2,7 @@
     vueblog
 </template>
 
-<script lang=ts setup name="VueBlog">
+<script lang=ts setup name="VueContent">
 
 </script>
 

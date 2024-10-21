@@ -1,6 +1,7 @@
-import type { navigatorItem } from '@/types'
+import type { dockerItem, menuParentItem } from '@/types'
 
-export const dockList: Array<navigatorItem> = [
+// Dock的应用程序
+export const dockList: Array<dockerItem> = [
   {
     id: 'vue',
     name: 'vue',
@@ -16,5 +17,20 @@ export const dockList: Array<navigatorItem> = [
     path: '/react',
     state: 'reactState',
     zIndex: 2
+  }
+]
+
+// Vue菜单的配置项
+export const menuConfig: Array<menuParentItem> = [
+  {
+    id: '1',
+    name: '第一个父菜单',
+    icon: '1',
+    children: [
+      {
+        id: '1',
+        name: '第一个子菜单'
+      }
+    ]
   }
 ]

@@ -11,3 +11,15 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+:root {
+  --background-blur-color: rgba(0,0,0,0.3);
+  --background-color: rgba(28,28,28,1);
+  --text-color: white;
+}
+
+.dark-mode {
+  --background-blur-color: rgba(255, 255, 255, 0.3);
+  --background-color: rgba(240, 240, 240, 1);
+  --text-color: black;
+}

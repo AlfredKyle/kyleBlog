@@ -2,7 +2,7 @@
     reactblog
 </template>
 
-<script lang=ts setup name="ReactBlog">
+<script lang=ts setup name="ReactContent">
 
 </script>
 

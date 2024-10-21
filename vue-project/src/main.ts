@@ -24,6 +24,9 @@ const vuetify = createVuetify({
   directives,
   icons: {
     defaultSet: 'mdi'
+  },
+  theme: {
+    defaultTheme: 'dark'
   }
 })
 app.use(router)

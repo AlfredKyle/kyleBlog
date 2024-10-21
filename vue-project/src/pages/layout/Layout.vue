@@ -7,9 +7,9 @@
 
         <!-- 显示内容 -->
         <div class=" bg-red-500 h-full w-full content">
-            <Transition v-for="(item, index) in dockList" :key="item.id">
+            <Transition v-for="item in dockList" :key="item.id">
                 <Window v-show="windowStates[item.state as keyof typeof windowStates].value" class="window"
-                    :uniqueId="item.id">
+                    :uniqueId="item.id" :zIndex="item.zIndex">
                     <RouterView></RouterView>
                 </Window>
             </Transition>

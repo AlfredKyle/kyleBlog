@@ -1,8 +1,9 @@
 <template>
     <div v-drag="{ handle: `#${uniqueId}1, #${uniqueId}2` }"
-        class="h-4/5 w-4/5 absolute top-16 left-32 rounded-xl flex flex-row items-center overflow-hidden">
+        class="h-4/5 w-4/5 absolute top-16 left-32 rounded-xl flex flex-row items-center overflow-hidden"
+        :style="{ zIndex: zIndex }">
         <!-- 左侧 -->
-        <div class="h-full w-48 bg-white/[0.4] p-4 flex flex-col backdrop-blur-xl gap-4">
+        <div class="h-full w-48 bg-black/[0.2] p-4 flex flex-col backdrop-blur-xl gap-4">
             <!-- 上方工具栏 -->
             <div class=" flex justify-start gap-2" :id="`${uniqueId}1`">
                 <v-btn density="compact" icon="mdi-close" color="red"></v-btn>
@@ -32,7 +33,7 @@
 </template>
 
 <script lang=ts setup name="Window">
-defineProps(['uniqueId']);
+defineProps(['uniqueId', 'zIndex']);
 </script>
 
 <style scoped></style>

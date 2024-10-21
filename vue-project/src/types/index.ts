@@ -4,4 +4,5 @@ export interface navigatorItem {
   url: string
   path: string
   state: string
+  zIndex: number
 }

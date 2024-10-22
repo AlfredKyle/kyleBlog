@@ -16,7 +16,7 @@
                     prepend-inner-icon="mdi-magnify" clearable></v-text-field>
             </div>
             <!-- 下方子菜单 -->
-            <div class="flex-1 w-full">
+            <div class="flex-1 w-full overflow-y-auto">
                 <slot name="menu"></slot>
             </div>
         </div>

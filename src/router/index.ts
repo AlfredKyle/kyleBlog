@@ -63,13 +63,9 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/desktop',
+      path: '/',
       name: 'desktop',
       component: Layout
-    },
-    {
-      path: '/',
-      redirect: '/desktop'
     }
   ]
 })

@@ -2,9 +2,8 @@
     <div
         class=" backdrop-blur-sm bg-[var(--background-blur-color)] h-full flex justify-between px-5 py-1 text-[var(--text-color)] topBar">
         <div class=" inline-flex gap-4 font-bold">
-            <img src="/icons/huawei.png" style="height: 100%;">
+            <img src="/icons/mygo.png" style="height: 100%;" @click="changeDarkMode" class=" cursor-pointer">
             欢迎来到小破站
-            <v-btn class="h-auto" @click="changeDarkMode">切换</v-btn>
         </div>
         <ul class="inline-flex gap-2 font-bold">
             <!-- <li>{{ currentTheme }}</li> -->

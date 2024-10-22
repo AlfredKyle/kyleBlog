@@ -1,7 +1,7 @@
 import Layout from '@/pages/layout/Layout.vue'
 import VueContent from '@/pages/vue/VueContent.vue'
 import ReactContent from '@/pages/react/ReactContent.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 
 /* const router = createRouter({
   history: createWebHistory(),
@@ -60,7 +60,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 }) */
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/',

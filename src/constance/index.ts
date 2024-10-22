@@ -1,11 +1,13 @@
 import type { dockerItem, menuParentItem } from '@/types'
+import VueImgUrl from '/icons/vue.png'
+import ReactImgUrl from '/icons/react.png'
 
 // Dock的应用程序
 export const dockList: Array<dockerItem> = [
   {
     id: 'vue',
     name: 'vue',
-    url: '/icons/vue.png',
+    url: VueImgUrl,
     path: '/vue',
     state: 'vueState',
     zIndex: 0
@@ -13,7 +15,7 @@ export const dockList: Array<dockerItem> = [
   {
     id: 'react',
     name: 'react',
-    url: '/icons/react.png',
+    url: ReactImgUrl,
     path: '/react',
     state: 'reactState',
     zIndex: 2

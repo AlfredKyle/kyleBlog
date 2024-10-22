@@ -4,7 +4,7 @@
 
 <script lang=ts setup name="Menu">
 import MenuItem from '@/components/MenuItem.vue';
-const imgUrl = '/icons/appStore.png'
+import imgUrl from '/icons/appStore.png';
 </script>
 
 <style scoped></style>

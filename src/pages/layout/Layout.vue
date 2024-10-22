@@ -22,7 +22,7 @@
         </div>
 
         <!-- 底部Docker -->
-        <div class="fixed w-full h-16 bottom-4 flex justify-center z-[9999]">
+        <div class="fixed left-1/2 -translate-x-1/2 h-16 bottom-4 flex justify-center z-[9999]">
             <DockBar></DockBar>
         </div>
 

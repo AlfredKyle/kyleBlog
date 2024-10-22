@@ -6,7 +6,7 @@ import vueSetUpExtend from 'vite-plugin-vue-setup-extend'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/kyleBlog/',
+  base: process.env.NODE_ENV === 'production' ? '/kyleBlog/' : '/',
   build: {
     outDir: 'docs'
   },

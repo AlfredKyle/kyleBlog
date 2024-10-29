@@ -6,8 +6,8 @@
         </div>
 
         <!-- 显示内容 -->
-        <div class="h-full w-full content relative">
-            <Transition v-for="item in refDockList" :key="item.id">
+        <div class="h-full w-full content relative flex justify-center items-center">
+            <Transition name="windowBounce" v-for="item in refDockList" :key="item.id">
                 <Window @mousedown="bringTheWindowUp(item)"
                     v-show="windowStates[item.state as keyof typeof windowStates].value" class="window"
                     :uniqueId="item.id" :zIndex="item.zIndex" :state="item.state">
@@ -22,18 +22,16 @@
         </div>
 
         <!-- 底部Docker -->
-        <div class="fixed left-1/2 -translate-x-1/2 h-16 bottom-4 flex justify-center z-[9999]">
-            <DockBar></DockBar>
-        </div>
+        <DockBar></DockBar>
 
     </div>
 
 </template>
 
 <script lang="ts" setup name="Layout">
-import DockBar from '@/components/DockBar.vue';
-import Navigator from '@/components/Navigator.vue';
-import Window from '@/components/Window.vue';
+import DockBar from '@/components/DockerBar/DockBar.vue';
+import Navigator from '@/components/Navigator/Navigator.vue';
+import Window from '@/components/Window/Window.vue';
 import useComponent from '@/hooks/useComponent';
 import { useWindowStore } from '@/store/useWindowStore';
 import { storeToRefs } from 'pinia';
@@ -50,14 +48,25 @@ const { getWindowContentComponent, getWindowMenuComponent } = useComponent()
     background-size: cover;
 }
 
-.v-enter-active,
-.v-leave-active {
-    transition: all 0.4s ease;
+.windowBounce-enter-active {
+    animation: bounce-in 0.5s ease;
 }
 
-.v-enter-from,
-.v-leave-to {
-    scale: 0.4;
-    opacity: 0;
+.windowBounce-leave-active {
+    animation: bounce-in 0.5s reverse;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 </style>

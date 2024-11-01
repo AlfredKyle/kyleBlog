@@ -76,16 +76,17 @@ onMounted(() => {
 
     // 鼠标移到浏览器底部，显示dock栏
     window.addEventListener('mousemove', e => {
-        const threshold = 20;
+        const thresholdY = 20;
+        const thresholdX = 100;
         const windHeight = window.innerHeight;
         const windWidth = window.innerWidth;
         const mouseX = e.clientX;
         const mouseY = e.clientY;
 
         // 是否接近底部
-        const isNearBottom = windHeight - mouseY < threshold;
+        const isNearBottom = windHeight - mouseY < thresholdY;
         // 是否接近中心
-        const isNearCenter = Math.abs((windWidth / 2) - mouseX) < threshold;
+        const isNearCenter = Math.abs((windWidth / 2) - mouseX) < thresholdX;
 
         if (isNearBottom && isNearCenter) {
             showDock();

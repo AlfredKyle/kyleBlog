@@ -7,6 +7,7 @@ import type { dockerItem } from '@/types'
 export const useWindowStore = defineStore('windowMange', () => {
   let vueState = ref(false)
   let reactState = ref(false)
+  let settingsState = ref(false)
   const refDockList = ref([...dockList])
 
   let maxIndex: number = Math.max(...refDockList.value.map((item) => item.zIndex))
@@ -17,7 +18,6 @@ export const useWindowStore = defineStore('windowMange', () => {
       maxIndex++
       itemInList.zIndex = maxIndex
     }
-    console.log(maxIndex, itemInList?.zIndex)
   }
 
   function changeWindowState(name: string) {
@@ -28,10 +28,13 @@ export const useWindowStore = defineStore('windowMange', () => {
       case windowStateList.REACT:
         reactState.value = !reactState.value
         break
+      case windowStateList.SETTINGS:
+        settingsState.value = !settingsState.value
+        break
       default:
         break
     }
   }
 
-  return { vueState, reactState, refDockList, changeWindowState, bringTheWindowUp }
+  return { vueState, reactState, settingsState, refDockList, changeWindowState, bringTheWindowUp }
 })

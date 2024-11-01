@@ -14,8 +14,8 @@ a {
 }
 
 :root {
-  --background-blur-color: rgba(0,0,0,0.3);
-  --background-color: rgba(28,28,28,1);
+  --background-blur-color: rgba(0, 0, 0, 0.3);
+  --background-color: rgba(28, 28, 28, 1);
   --text-color: white;
 }
 

@@ -8,8 +8,7 @@
         </LeftContent>
 
         <!-- 右侧内容 -->
-        <RightContent :unique-id="uniqueId">
-            <slot name="content"></slot>
+        <RightContent :unique-id="uniqueId" :correspondingMenu="correspondingMenu" :getComponentFunc="getComponentFunc">
         </RightContent>
     </div>
 </template>
@@ -18,7 +17,7 @@
 import LeftContent from './BigWindowContent/LeftContent.vue';
 import RightContent from './BigWindowContent/RightContent.vue';
 
-defineProps(['uniqueId', 'zIndex', 'state']);
+defineProps(['uniqueId', 'zIndex', 'state', 'correspondingMenu', 'getComponentFunc']);
 </script>
 
 <style scoped>

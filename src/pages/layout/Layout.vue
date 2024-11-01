@@ -9,13 +9,11 @@
         <div class="h-full w-full content relative flex justify-center items-center">
             <Transition name="windowBounce" v-for="item in refDockList" :key="item.id">
                 <Window @mousedown="bringTheWindowUp(item)"
-                    v-show="windowStates[item.state as keyof typeof windowStates].value" class="window"
-                    :uniqueId="item.id" :zIndex="item.zIndex" :state="item.state">
+                    v-if="windowStates[item.state as keyof typeof windowStates].value" class="window"
+                    :uniqueId="item.id" :zIndex="item.zIndex" :state="item.state"
+                    :correspondingMenu="item.correspondingMenu" :getComponentFunc="item.getComponentFunc">
                     <template #menu>
                         <component :is="getWindowMenuComponent(item.state)"></component>
-                    </template>
-                    <template #content>
-                        <component :is="getWindowContentComponent(item.state)"></component>
                     </template>
                 </Window>
             </Transition>
@@ -37,7 +35,7 @@ import { useWindowStore } from '@/store/useWindowStore';
 import { storeToRefs } from 'pinia';
 let windowStates = storeToRefs(useWindowStore())
 const { refDockList, bringTheWindowUp } = useWindowStore()
-const { getWindowContentComponent, getWindowMenuComponent } = useComponent()
+const { getWindowMenuComponent } = useComponent()
 </script>
 
 

@@ -6,6 +6,8 @@ import themeImgUrl from '/icons/theme.png'
 import dockImgUrl from '/icons/dock.png'
 import aboutImgUrl from '/icons/about.png'
 import useComponent from '@/hooks/useComponent'
+import bgImgUrl from '/background.png'
+import { theme } from '@/enums'
 const { getVueContentComponent, getReactContentComponent, getSettingsContentComponent } =
   useComponent()
 
@@ -56,5 +58,24 @@ export const settingsMenuConfig: Array<menuItemType> = [
     id: 'about',
     name: '关于',
     icon: aboutImgUrl
+  }
+]
+
+// 主题模式
+export const themeList = [
+  {
+    label: '浅色模式',
+    value: theme.LIGHT,
+    imgUrl: bgImgUrl
+  },
+  {
+    label: '深色模式',
+    value: theme.DARK,
+    imgUrl: bgImgUrl
+  },
+  {
+    label: '自动模式',
+    value: theme.AUTO,
+    imgUrl: bgImgUrl
   }
 ]

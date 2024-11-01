@@ -31,11 +31,16 @@ import DockBar from '@/components/DockerBar/DockBar.vue';
 import Navigator from '@/components/Navigator/Navigator.vue';
 import Window from '@/components/Window/Window.vue';
 import useComponent from '@/hooks/useComponent';
+import useConfig from '@/hooks/useConfig';
 import { useWindowStore } from '@/store/useWindowStore';
 import { storeToRefs } from 'pinia';
 let windowStates = storeToRefs(useWindowStore())
 const { refDockList, bringTheWindowUp } = useWindowStore()
 const { getWindowMenuComponent } = useComponent()
+const { initialConfig } = useConfig();
+
+// 初始化配置项
+initialConfig()
 </script>
 
 

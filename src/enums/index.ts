@@ -11,3 +11,10 @@ export enum settingsContent {
   DOCK = 'dock',
   ABOUT = 'about'
 }
+
+// 主题模式
+export enum theme {
+  LIGHT = 'light',
+  DARK = 'dark',
+  AUTO = 'auto'
+}

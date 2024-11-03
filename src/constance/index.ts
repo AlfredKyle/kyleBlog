@@ -1,4 +1,5 @@
 import type { dockerItem, menuItemType } from '@/types'
+import bgImgUrl from '/background.png'
 import VueImgUrl from '/icons/vue.png'
 import ReactImgUrl from '/icons/react.png'
 import SettingsImgUrl from '/icons/settings.png'
@@ -6,7 +7,7 @@ import themeImgUrl from '/icons/theme.png'
 import dockImgUrl from '/icons/dock.png'
 import aboutImgUrl from '/icons/about.png'
 import useComponent from '@/hooks/useComponent'
-import bgImgUrl from '/background.png'
+import clockImgUrl from '/icons/clock.png'
 import { theme } from '@/enums'
 const { getVueContentComponent, getReactContentComponent, getSettingsContentComponent } =
   useComponent()
@@ -53,6 +54,11 @@ export const settingsMenuConfig: Array<menuItemType> = [
     id: 'dock',
     name: 'Dock',
     icon: dockImgUrl
+  },
+  {
+    id: 'clock',
+    name: '时钟',
+    icon: clockImgUrl
   },
   {
     id: 'about',

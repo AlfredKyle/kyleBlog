@@ -1,3 +1,5 @@
+import type { clockStyle, dockMode, theme } from '@/enums'
+
 /** docker菜单item
  * id：唯一标识符
  * name：显示的名称
@@ -25,4 +27,24 @@ export interface menuItemType {
   id: string
   name: string
   icon: string
+}
+
+/** 配置项
+ * savedTheme: 保存的主题
+ * savedClockStyle：保存的时钟格式
+ * savedDock：保存的Dock
+ */
+export interface configType {
+  savedTheme: theme
+  savedClockStyle: clockStyle
+  savedDock: dock
+}
+
+/** Dock配置项对象
+ * duration: 持续时间
+ * currentDockMode：当前的dock模式
+ */
+export interface dock {
+  duration: number
+  currentDockMode: dockMode
 }

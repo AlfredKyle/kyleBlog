@@ -17,19 +17,18 @@
 </template>
 
 <script lang="ts" setup name="DockBar">
+import { useDock } from '@/store/useDock';
 import { useWindowStore } from '@/store/useWindowStore';
 import type { dockerItem } from '@/types';
-import { onMounted, ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { onMounted } from 'vue';
 
 let { changeWindowState } = useWindowStore();
 
 const { refDockList, bringTheWindowUp } = useWindowStore();
-
-let dockState = ref(true);
-// 定时器
-let timer = 0;
-// Dock持续时间
-let duration = 3;
+const dockSotre = useDock();
+const { dockState } = storeToRefs(dockSotre);
+const { initialDockStyle } = dockSotre;
 
 /* 打开窗口 */
 function goTo(item: dockerItem) {
@@ -40,81 +39,9 @@ function goTo(item: dockerItem) {
 }
 
 onMounted(() => {
-    document.querySelectorAll('.dockLi').forEach(li => {
-        li.addEventListener('mousemove', e => {
-            let item = e.target as HTMLLIElement
-            let itemRect = item.getBoundingClientRect()
-            let offset = Math.abs((<MouseEvent>e).clientX - itemRect.left) / itemRect.width
-            let prev = item.previousElementSibling || null;
-            let next = item.nextElementSibling || null;
-            let scale = 0.6
-
-            resetScale();
-
-            if (prev) {
-                (<HTMLLIElement>prev).style.setProperty('--scale', String(1 + scale * Math.abs(offset - 1)));
-            }
-
-            item.style.setProperty('--scale', String(1 + scale));
-
-            if (next) {
-                (<HTMLLIElement>next).style.setProperty('--scale', String(1 + scale * offset));
-            }
-        })
-    })
-
-    // 鼠标离开dock，重设缩放比例并且添加计时器
-    document.querySelector('.dock')?.addEventListener('mouseleave', e => {
-        resetScale();
-        hideDock();
-    })
-
-    // 鼠标移入dock，清除计时器
-    document.querySelector('.dock')?.addEventListener('mousemove', e => {
-        clearTimeout(timer);
-    })
-
-    // 鼠标移到浏览器底部，显示dock栏
-    window.addEventListener('mousemove', e => {
-        const thresholdY = 20;
-        const thresholdX = 100;
-        const windHeight = window.innerHeight;
-        const windWidth = window.innerWidth;
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        // 是否接近底部
-        const isNearBottom = windHeight - mouseY < thresholdY;
-        // 是否接近中心
-        const isNearCenter = Math.abs((windWidth / 2) - mouseX) < thresholdX;
-
-        if (isNearBottom && isNearCenter) {
-            showDock();
-        }
-    })
-
-    // 隐藏Dock
-    hideDock();
+    // 初始化DockBar样式
+    initialDockStyle();
 })
-
-/* 重置缩放大小 */
-function resetScale() {
-    document.querySelectorAll('.dockLi').forEach(li => {
-        (<HTMLLIElement>li).style.setProperty('--scale', '1');
-    })
-}
-
-/* 恢复Dock */
-function showDock() {
-    dockState.value = true;
-}
-
-/* 隐藏Dock */
-function hideDock() {
-    timer = setTimeout(() => {
-        dockState.value = false
-    }, duration * 1000);
-}
 
 </script>
 

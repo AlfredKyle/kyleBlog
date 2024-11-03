@@ -9,6 +9,7 @@ export enum windowStateList {
 export enum settingsContent {
   THEME = 'theme',
   DOCK = 'dock',
+  CLOCK = 'clock',
   ABOUT = 'about'
 }
 
@@ -17,4 +18,16 @@ export enum theme {
   LIGHT = 'light',
   DARK = 'dark',
   AUTO = 'auto'
+}
+
+// 时钟样式
+export enum clockStyle {
+  STYLEA = 'HH:mm:ss',
+  STYLEB = 'HH:mm'
+}
+
+// dock模式
+export enum dockMode {
+  SHOW = 'show',
+  HIDE = 'hide'
 }

@@ -5,6 +5,7 @@ import SettingsMenu from '@/pages/settings/SettingsMenu.vue'
 import Theme from '@/pages/settings/windowContent/Theme.vue'
 import Dock from '@/pages/settings/windowContent/Dock.vue'
 import About from '@/pages/settings/windowContent/About.vue'
+import Clock from '@/pages/settings/windowContent/Clock.vue'
 
 export default function () {
   // 获取窗口的菜单
@@ -66,6 +67,9 @@ export default function () {
         break
       case settingsContent.DOCK:
         componenet = Dock
+        break
+      case settingsContent.CLOCK:
+        componenet = Clock
         break
       case settingsContent.ABOUT:
         componenet = About

@@ -6,16 +6,16 @@
             KyleS
         </div>
         <ul class="inline-flex gap-2 font-bold">
-            <!-- <li>{{ currentTheme }}</li> -->
             <li>{{ currentTime }}</li>
         </ul>
     </div>
 </template>
 
 <script lang="ts" setup name="Navigator">
-import useTime from '@/hooks/useTime';
-import { useTheme } from 'vuetify';
-let { currentTime } = useTime();
+import { useTime } from '@/store/useTime';
+import { storeToRefs } from 'pinia';
+const timeStore = useTime();
+const { currentTime } = storeToRefs(timeStore);
 </script>
 
 <style scoped></style>

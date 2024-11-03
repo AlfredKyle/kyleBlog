@@ -58,6 +58,8 @@ export const useDock = defineStore('dock', () => {
         break
       // 如果设置为显示模式
       case dockMode.SHOW:
+        // 清除现在定时器
+        clearTimeout(timer)
         // 移除所有与模式有关的监听器
         removeAllEventListenerAboutMode()
         // 显示Dock
